@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú Principal - Sistema de Kioscos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .menu-container {
+      max-width: 600px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .menu-container h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .menu-container button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+    #listaKioscos {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    #listaKioscos li {
+      background: #eee;
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    #listaKioscos li:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <h1>Bienvenido</h1>
+    <button onclick="irAAdmin()">🔧 Administrar Kioscos</button>
+    <h2>Kioscos disponibles:</h2>
+    <ul id="listaKioscos"></ul>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
