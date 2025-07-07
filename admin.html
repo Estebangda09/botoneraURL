@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Administrador de Kioscos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header><h1>Administrador de Kioscos</h1></header>
+  <main class="admin-container">
+    <section>
+      <label for="selectKiosco">Seleccionar Kiosco:</label>
+      <select id="selectKiosco"></select>
+      <button id="btnNuevoKiosco">+ Nuevo Kiosco</button>
+      <p><strong>URL del kiosco:</strong> <span id="urlKiosco"></span></p>
+    </section>
+
+    <section>
+      <h2>Configuración General</h2>
+      <label>Color Fondo: <input type="color" id="colorFondo" /></label>
+      <label>Color Texto: <input type="color" id="colorTexto" /></label>
+      <label>Tipografía:
+        <select id="tipografia">
+          <option value="">Sans-serif (default)</option>
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="'Courier New', Courier, monospace">Courier New</option>
+          <option value="'Times New Roman', Times, serif">Times New Roman</option>
+          <option value="'Comic Sans MS', cursive, sans-serif">Comic Sans MS</option>
+        </select>
+      </label>
+      
+      <div class="file-input-group">
+        <label>Logo:</label>
+        <input type="text" id="logoUrl" placeholder="URL del logo o vacío" />
+        <input type="file" id="logoFile" accept="image/*" />
+        <button id="btnClearLogo">Limpiar Logo</button>
+      </div>
+      
+      <div class="file-input-group">
+        <label>Fondo (imagen/video):</label>
+        <input type="text" id="fondoUrl" placeholder="URL del fondo o vacío" />
+        <input type="file" id="fondoFile" accept="image/*,video/*" />
+        <button id="btnClearFondo">Limpiar Fondo</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Botones</h2>
+      <ul id="listaBotones"></ul>
+      <button id="btnAgregarBoton">Agregar Botón</button>
+    </section>
+
+    <section>
+      <h2>Protector de Pantalla</h2>
+      <label>Tiempo Inactividad (segundos):
+        <input type="number" id="protectorTiempo" min="10" max="600" value="60" />
+      </label>
+      <div>
+        <label>Agregar Imagen/Video local:
+          <input type="file" id="fileProtector" multiple accept="image/*,video/*" />
+        </label>
+      </div>
+      <ul id="listaProtector"></ul>
+    </section>
+
+    <button id="btnGuardar">Guardar Configuración</button>
+    <button id="btnLanzarKiosco">Lanzar Kiosco</button>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
