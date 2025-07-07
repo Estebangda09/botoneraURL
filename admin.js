@@ -3,6 +3,8 @@ const btnNuevoKiosco = document.getElementById("btnNuevoKiosco");
 const colorFondo = document.getElementById("colorFondo");
 const colorTexto = document.getElementById("colorTexto");
 const tipografia = document.getElementById("tipografia");
+const botonAlto = document.getElementById("botonAlto");
+const botonFuente = document.getElementById("botonFuente");
 const logoUrl = document.getElementById("logoUrl");
 const fondoUrl = document.getElementById("fondoUrl");
 const logoFile = document.getElementById("logoFile");
@@ -16,6 +18,7 @@ const btnAgregarBoton = document.getElementById("btnAgregarBoton");
 const protectorTiempo = document.getElementById("protectorTiempo");
 const fileProtector = document.getElementById("fileProtector");
 const listaProtector = document.getElementById("listaProtector");
+
 
 const btnGuardar = document.getElementById("btnGuardar");
 const btnLanzarKiosco = document.getElementById("btnLanzarKiosco");
@@ -53,6 +56,8 @@ function cargarKiosco(id) {
   tipografia.value = cfg.tipografia || "";
   logoUrl.value = cfg.logoUrl || "";
   fondoUrl.value = cfg.fondoUrl || "";
+  botonAlto.value = cfg.botonAlto || 60;
+  botonFuente.value = cfg.botonFuente || 18;
 
   protectorTiempo.value = cfg.protectorTiempo || 60;
 
@@ -227,7 +232,10 @@ btnGuardar.onclick = () => {
     fondoUrl: fondoUrl.value.trim(),
     protectorTiempo: Number(protectorTiempo.value) || 60,
     protectorLista: protectorLista,
-    botones: botones
+    botones: botones,
+    botonAlto: Number(botonAlto.value) || 60,
+    botonFuente: Number(botonFuente.value) || 18,
+
   };
 
   guardarKioscosEnStorage();
@@ -278,3 +286,31 @@ btnLanzarKiosco.onclick = () => {
   const url = `kiosco.html?id=${encodeURIComponent(kioscoActual)}`;
   window.open(url, "_blank");
 };
+document.getElementById("btnExportar").onclick = () => {
+  const json = JSON.stringify(kioscos, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "kioscos_config.json";
+  a.click();
+};
+
+document.getElementById("btnImportar").onclick = () => {
+  document.getElementById("fileImportar").click();
+};
+
+document.getElementById("fileImportar").addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const text = await file.text();
+  try {
+    const data = JSON.parse(text);
+    kioscos = data;
+    guardarKioscosEnStorage();
+    refrescarSelect();
+    alert("Importación exitosa.");
+  } catch (e) {
+    alert("Error al importar el archivo.");
+  }
+});
