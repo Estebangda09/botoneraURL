@@ -29,6 +29,12 @@
           <option value="'Comic Sans MS', cursive, sans-serif">Comic Sans MS</option>
         </select>
       </label>
+      <label>Tamaño del botón (alto en px):
+        <input type="number" id="botonAlto" min="30" max="300" value="60" />
+      </label>
+      <label>Tamaño del texto del botón (px):
+        <input type="number" id="botonFuente" min="10" max="60" value="18" />
+      </label>
       
       <div class="file-input-group">
         <label>Logo:</label>
@@ -66,6 +72,9 @@
 
     <button id="btnGuardar">Guardar Configuración</button>
     <button id="btnLanzarKiosco">Lanzar Kiosco</button>
+    <button id="btnExportar">Exportar Configuración</button>
+    <button id="btnImportar">Importar Configuración</button>
+    <input type="file" id="fileImportar" accept=".json" style="display: none;" />
   </main>
 
   <script src="admin.js"></script>
