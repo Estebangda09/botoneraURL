@@ -59,20 +59,21 @@ function aplicarEstilos() {
     }
   }
   
-  // Aplicar logo
-  if (config.logoUrl) {
-    const logo = document.createElement("img");
-    logo.src = config.logoUrl;
-    logo.id = "logo";
-    logo.style.position = "fixed";
-    logo.style.top = "20px";
-    logo.style.left = "20px";
-    logo.style.maxWidth = "200px";
-    logo.style.maxHeight = "100px";
-    logo.style.zIndex = "100";
-    body.appendChild(logo);
-  }
-  
+ // Aplicar logo
+if (config.logoUrl) {
+  const logo = document.createElement("img");
+  logo.src = config.logoUrl;
+  logo.id = "logo";
+  logo.style.position = "fixed";
+  logo.style.top = "15px"; // Más abajo para no chocar con la barra superior
+  logo.style.left = "50%"; // Centrado horizontal
+  logo.style.transform = "translateX(-50%)"; // Centrado con precisión
+  logo.style.maxWidth = "200px";
+  logo.style.maxHeight = "100px";
+  logo.style.zIndex = "10000";
+  body.appendChild(logo);
+}
+
   // Aplicar colores y tipografía al contenedor
   contenedor.style.fontFamily = config.tipografia || "sans-serif";
 }
@@ -94,6 +95,9 @@ function renderBotones() {
     btn.style.color = config.colorTexto || "#000";
     btn.style.backgroundColor = config.colorFondo || "#ccc";
     btn.style.fontFamily = config.tipografia || "sans-serif";
+    btn.style.height = (config.botonAlto || 60) + "px";
+    btn.style.fontSize = (config.botonFuente || 18) + "px";
+
     btn.onclick = () => manejarClickBoton(boton);
     contenedor.appendChild(btn);
   });
@@ -120,6 +124,9 @@ function mostrarSubmenu(submenu) {
     btn.style.color = config.colorTexto || "#000";
     btn.style.backgroundColor = config.colorFondo || "#ccc";
     btn.style.fontFamily = config.tipografia || "sans-serif";
+    btn.style.height = (config.botonAlto || 60) + "px";
+    btn.style.fontSize = (config.botonFuente || 18) + "px";
+
     btn.onclick = () => manejarClickBoton(boton);
     contenedor.appendChild(btn);
   });
